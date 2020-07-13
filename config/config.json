@@ -1,10 +1,8 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "url": "postgres://pryndbpr:MIvycuNIIItm_biJ6jLFsYb_DOIsX9sl@balarama.db.elephantsql.com:5432/pryndbpr",
+    "dialect": "postgres",
+    "operatorAliases": "0"
   },
   "test": {
     "username": "root",

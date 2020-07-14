@@ -11,6 +11,13 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          task: "Do somethings",
+          deadline: "Tomorrow!!",
+          todoListId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ]);
     } catch (error) {
       console.log("something went wrong:", error.message);

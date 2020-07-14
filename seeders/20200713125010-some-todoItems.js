@@ -7,6 +7,7 @@ module.exports = {
         {
           task: "finish the Databases and ORMs section of the reader",
           deadline: "TODAYYYY!!",
+          todoListId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

@@ -11,6 +11,13 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "George",
+          email: "lala.com",
+          phone: 743652,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ]);
     } catch (error) {
       console.log("Something went wrong:", error.message);

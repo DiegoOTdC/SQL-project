@@ -4,9 +4,15 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     try {
       await queryInterface.bulkInsert("todoLists", [
-        { name: "Grocery list", createdAt: new Date(), updatedAt: new Date() },
+        {
+          name: "Grocery list",
+          userId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
         {
           name: "Codaisseur Reader List",
+          userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

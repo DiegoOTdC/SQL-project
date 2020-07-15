@@ -30,7 +30,7 @@ async function getUsersWithList() {
   return allUsers.map((user) => user.get({ plain: true }));
 }
 
-//getUsersWithList().then((users) => console.log("usersWithListNames", users)); //gives me an array with [Object] instead of an array with the name.. that is what I was expecting..
+getUsersWithList().then((users) => console.log("usersWithListNames", users)); //gives me an array with [Object] instead of an array with the name.. that is what I was expecting..
 
 // 4 Get one user by id with his lists
 

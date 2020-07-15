@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "httpie": "^1.1.2",
+    "nodemon": "^2.0.4",
     "pg": "^8.3.0",
     "sequelize": "^6.3.3",
     "sequelize-cli": "^6.2.0"

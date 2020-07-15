@@ -64,6 +64,11 @@ app.get("/todolists", async (req, res) => {
   }
 });
 
+app.post("/todolists", (req, res) => {
+  console.log("this works");
+  res.send("you got me!");
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on: ${PORT}`);
 });

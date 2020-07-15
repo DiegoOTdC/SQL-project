@@ -55,9 +55,13 @@ app.put("/users/:userId", async (req, res) => {
   }
 });
 
-app.get("/todolists", (req, res) => {
-  console.log("this is working");
-  res.send("route is working fine!");
+app.get("/todolists", async (req, res) => {
+  try {
+    const lists = await TodoList.findAll();
+    res.json(lists);
+  } catch (e) {
+    res.status(400).send({ message: "Error GET todolists" });
+  }
 });
 
 app.listen(PORT, () => {

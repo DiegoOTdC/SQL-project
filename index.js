@@ -39,9 +39,11 @@ app.get("/users/:userId", async (req, res) => {
   }
 });
 
-app.put("/users/:userId", (req, res) => {
-  console.log("this is working");
-  res.send("it really is working");
+app.put("/users/:userId", async (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const userToUpdate = await User.findByPk(userId);
+  console.log(userToUpdate);
+  res.send(userToUpdate);
 });
 
 app.listen(PORT, () => {

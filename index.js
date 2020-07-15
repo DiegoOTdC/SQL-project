@@ -69,17 +69,18 @@ app.get("/users/:userId/lists", async (req, res) => {
   }
 });
 
-app.post("/todolists", async (req, res) => {
+app.post("/users/:userId/lists", async (req, res) => {
   try {
-    const name = req.body.name;
-    if (!name || name === " ") {
-      res.status(400).send("Must provide a name for the list");
-    } else if (!userId) {
-      const list = await TodoList.create(req.body);
+    const userId = parseInt(req.params.userId);
+    const user = await User.findByPk(userId, { include: [TodoList] });
+    if (!user) {
+      res.status(404).send("user not found");
+    } else {
+      const list = await TodoList.create({ userId, ...req.body });
       res.json(list);
     }
   } catch (e) {
-    res.status(404).send({ message: "Error posting a new todo list" });
+    res.status(400).send({ message: "Error posting a new todo list" });
   }
 });
 

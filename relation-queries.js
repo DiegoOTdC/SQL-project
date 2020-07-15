@@ -1,4 +1,4 @@
-const { user, todoItem, todoList } = require("./models");
+const { user, todoItem, todoList, tag } = require("./models");
 
 // 1 get todoLists with user data
 async function listsWithUsers() {
@@ -30,7 +30,7 @@ async function getUsersWithList() {
   return allUsers.map((user) => user.get({ plain: true }));
 }
 
-getUsersWithList().then((users) => console.log("usersWithListNames", users)); //gives me an array with [Object] instead of an array with the name.. that is what I was expecting..
+//getUsersWithList().then((users) => console.log("usersWithListNames", users)); //gives me an array with [Object] instead of an array with the name.. that is what I was expecting..
 
 // 4 Get one user by id with his lists
 
@@ -71,4 +71,16 @@ async function userIdListItemTask(id) {
   return users.get({ plain: true });
 }
 
-userIdListItemTask(2).then((user) => console.log("user with tasks", user)); // gives [array] instead of the items in todoItems.
+//userIdListItemTask(2).then((user) => console.log("user with tasks", user)); // gives [array] instead of the items in todoItems.
+
+// 7 get all todoItems with their corresponding tags.
+
+async function getItemWithTags() {
+  const result = await todoItem.findAll({
+    include: { model: tag, attributes: ["title"] },
+  });
+  return result.map((item) => item.get({ plain: true }));
+}
+//getItemWithTags().then((item) => console.log("item with tag", item)); //same problem as with 6 and 3
+
+//number 3, 6 and 7 have an issue. they don't show the key's value's name, but show [Object] instead.

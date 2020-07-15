@@ -12,8 +12,8 @@ app.post("/echo", (request, response) => {
 });
 
 app.post("/users", async (req, res, next) => {
-  const email = req.body.email;
   try {
+    const email = req.body.email;
     if (!email || email === " ") {
       res.status(400).send("Must provide an email address");
     } else {
@@ -25,9 +25,23 @@ app.post("/users", async (req, res, next) => {
   }
 });
 
-app.get("/users/:userId", (req, res) => {
-  console.log("Is this working?");
-  console.log(req.body);
+app.get("/users/:userId", async (req, res) => {
+  try {
+    const userId = parseInt(req.params.userId);
+    const user = await User.findByPk(userId);
+    if (!user) {
+      res.status(404).send("User not found");
+    } else {
+      res.send(user);
+    }
+  } catch (e) {
+    res.status(400).send({ message: `Error in getting user` });
+  }
+});
+
+app.put("/users/:userId", (req, res) => {
+  console.log("this is working");
+  res.send("it really is working");
 });
 
 app.listen(PORT, () => {

@@ -55,18 +55,32 @@ app.put("/users/:userId", async (req, res) => {
   }
 });
 
-app.get("/todolists", async (req, res) => {
+app.get("/users/:userId/lists", async (req, res) => {
   try {
-    const lists = await TodoList.findAll();
-    res.json(lists);
+    const userId = parseInt(req.params.userId);
+    const user = await User.findByPk(userId, { include: [TodoList] });
+    if (user) {
+      res.send(user.todoLists);
+    } else {
+      res.status(404).send("user not found");
+    }
   } catch (e) {
-    res.status(400).send({ message: "Error GET todolists" });
+    res.status(400).send({ message: "Error in getting todo lists" });
   }
 });
 
-app.post("/todolists", (req, res) => {
-  console.log("this works");
-  res.send("you got me!");
+app.post("/todolists", async (req, res) => {
+  try {
+    const name = req.body.name;
+    if (!name || name === " ") {
+      res.status(400).send("Must provide a name for the list");
+    } else if (!userId) {
+      const list = await TodoList.create(req.body);
+      res.json(list);
+    }
+  } catch (e) {
+    res.status(404).send({ message: "Error posting a new todo list" });
+  }
 });
 
 app.listen(PORT, () => {

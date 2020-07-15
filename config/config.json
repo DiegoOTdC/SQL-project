@@ -1,6 +1,6 @@
 {
   "development": {
-    "url": "postgres://pryndbpr:MIvycuNIIItm_biJ6jLFsYb_DOIsX9sl@balarama.db.elephantsql.com:5432/pryndbpr",
+    "url": "postgres://wyqtmjaanvdjkz:fdda85b8246a562954aa21cb6b553215636c4160279250a9e34260eeb0de636b@ec2-54-75-244-161.eu-west-1.compute.amazonaws.com:5432/da3a9quri64m5i",
     "dialect": "postgres",
     "operatorAliases": "0"
   },

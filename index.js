@@ -25,6 +25,11 @@ app.post("/users", async (req, res, next) => {
   }
 });
 
+app.get("/users/:userId", (req, res) => {
+  console.log("Is this working?");
+  console.log(req.body);
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on: ${PORT}`);
 });
